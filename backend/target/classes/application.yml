@@ -1,0 +1,41 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: notes-generator
+  datasource:
+    url: ${DATABASE_URL:jdbc:h2:file:./data/notes_generator;DB_CLOSE_ON_EXIT=FALSE}
+    username: ${DATABASE_USERNAME:sa}
+    password: ${DATABASE_PASSWORD:}
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+app:
+  jwtSecret: ${JWT_SECRET:9a4f2c8d3e7b1a5c6d8e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e}
+  jwtExpirationInMs: ${JWT_EXPIRATION_MS:86400000} # 24 hours
+
+cloudinary:
+  cloud-name: ${CLOUDINARY_CLOUD_NAME:demo}
+  api-key: ${CLOUDINARY_API_KEY:demo_key}
+  api-secret: ${CLOUDINARY_API_SECRET:demo_secret}
+
+gemini:
+  api-key: ${GEMINI_API_KEY:demo_gemini_key}
+
+chromadb:
+  url: ${CHROMADB_URL:http://localhost:8000}
+
+tesseract:
+  datapath: ${TESSERACT_DATAPATH:C:/Program Files/Tesseract-OCR/tessdata}
