@@ -66,6 +66,21 @@ public class SecurityConfig {
                                 "/swagger-resources/**",
                                 "/webjars/**"
                         ).permitAll()
+                        .requestMatchers(
+                                "/",
+                                "/index.html",
+                                "/favicon.svg",
+                                "/icons.svg",
+                                "/assets/**",
+                                "/login",
+                                "/signup",
+                                "/notes/**",
+                                "/summaries/**",
+                                "/flashcards/**",
+                                "/quizzes/**",
+                                "/chat/**",
+                                "/bookmarks/**"
+                        ).permitAll()
                         .anyRequest().authenticated()
                 );
 
